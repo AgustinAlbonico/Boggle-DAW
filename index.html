@@ -26,14 +26,20 @@
       <form id="welcomeForm">
         <h2>Bienvenido!</h2>
         <label for="name">Ingrese su nombre:</label>
-        <input type="text" name="name" id="name" placeholder="asd">
-        <button type="submit">Jugar!</button>
+        <div class="input-container">
+          <input type="text" name="name" id="nameInput" placeholder="Tu nombre">
+          <span id="nameError" class="error"></span>
+        </div>
+        <button type="submit" class="button">Jugar!</button>
       </form>
     </div>
+    <div class="boggleGame hidden"></div>
   </div>
   <footer class="footer">
     <p>&copy; 2024 Your Company Name. All rights reserved.</p>
   </footer>
+  <script src="./welcomeForm.js"></script>
+  <script src="./boggleGame.js"></script>
 </body>
 
 </html>
