@@ -1,0 +1,180 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  height: 100vh;
+  background-color: #f3f5f7;
+
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.navbar-container {
+    margin: 0 auto;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: black;
+}
+
+.logo {
+  font-size: 2.25rem;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.links a {
+  font-size: 1.25rem;
+  font-weight: bold;
+  transition: 0.3s all;
+}
+
+.links a:hover {
+  font-size: 1.5rem;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    padding: 1rem;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.footer p {
+    text-align: center;
+}
+/* Game */
+
+.welcomeForm {
+    width: 40%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.welcomeForm h2 {
+    font-size: 4rem;
+    padding: 2rem 0;
+}
+
+#welcomeForm{
+    display: flex;flex-direction: column;
+}
+
+#welcomeForm label{
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+#welcomeForm input {
+    padding: 0.75rem;
+    border: 1px solid black;
+    border-radius: 0.25rem;
+    transition: 0.3s all ease;
+    margin-bottom: 1rem;
+}
+
+#welcomeForm input:hover {
+    transform: scale(1.01);
+}
+
+/* Contact Form */
+
+.form-container {
+  margin: 0 auto;
+  width: 480px;
+  background-color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.form-container h2 {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+.form-input label {
+  font-size: 1.25rem;
+}
+
+.form-input input {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 0.5px black solid;
+  transition: 0.3s all;
+}
+
+.form-input input:hover {
+  transform: scale(1.01);
+}
+
+.form-input textarea {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 0.5px black solid;
+  resize: none;
+  transition: 0.3s all;
+  height: 200px;
+}
+
+.form-input textarea:hover {
+  transform: scale(1.01);
+}
+
+.error {
+  color: red;
+  font-size: 0.95rem;
+}
+
+.form-container button {
+  margin-top: 1rem;
+  background-color: #4238cb;
+  cursor: pointer;
+  width: 100%;
+  padding: 1rem 0;
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: 0.3s all ease;
+}
+
+.form-container button:hover {
+  font-size: 1.25rem;
+}
