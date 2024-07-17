@@ -9,31 +9,47 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
     rel="stylesheet" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
   <title>Boggle</title>
 </head>
 
 <body>
-  <nav class="navbar">
+  <nav class="navbar" id="navbar">
     <div class="navbar-container">
       <h1 class="logo"><a href="/">Boggle</a></h1>
       <div class="links">
         <a href="/">Inicio</a>
         <a href="/contacto.html">Contacto</a>
         <a href="https://github.com/AgustinAlbonico/Boggle-DAW" target="_blank">Repositorio</a>
+        <button id="rankingButton">Ranking</button>
   </nav>
   <div class="container">
     <div class="welcomeForm">
       <form id="welcomeForm">
         <h2>Bienvenido!</h2>
         <label for="name">Ingrese su nombre:</label>
-        <input type="text" name="name" id="name" placeholder="asd">
-        <button type="submit">Jugar!</button>
+        <div class="input-container">
+          <input type="text" name="name" id="nameInput" placeholder="Tu nombre">
+          <span id="nameError" class="error"></span>
+        </div>
+        <button type="submit" class="button">Jugar!</button>
       </form>
     </div>
+
+    <div class="boggleGame hidden">
+      <div class="game">
+        <span class="timer">Tiempo restante: </span>
+        
+      </div>
+      <div class="found-words"></div>
+    </div>
   </div>
+
   <footer class="footer">
     <p>&copy; 2024 Your Company Name. All rights reserved.</p>
   </footer>
+  <script src="./welcomeForm.js"></script>
+  <script src="./boggleGame.js"></script>
 </body>
 
 </html>

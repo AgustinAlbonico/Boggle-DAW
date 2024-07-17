@@ -1,3 +1,5 @@
+/* Generales */
+
 * {
   margin: 0;
   padding: 0;
@@ -8,7 +10,6 @@ body {
   font-family: 'Open Sans', sans-serif;
   height: 100vh;
   background-color: #f3f5f7;
-
 }
 
 .container {
@@ -19,6 +20,8 @@ body {
   align-items: center;
 }
 
+/* Navbar */
+
 .navbar {
   width: 100%;
   position: fixed;
@@ -27,11 +30,11 @@ body {
 }
 
 .navbar-container {
-    margin: 0 auto;
-    width: 70%;
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 0;
+  margin: 0 auto;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
 }
 
 .navbar a {
@@ -59,51 +62,85 @@ body {
   font-size: 1.5rem;
 }
 
+#rankingButton {
+  background-color: #4238cb;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s all ease;
+}
+
+#rankingButton:hover {
+  transform: scale(1.1);
+}
+
+/* Footer */
+
 .footer {
-    position: fixed;
-    bottom: 0;
-    padding: 1rem;
-    margin: 0 auto;
-    width: 100%;
+  position: fixed;
+  bottom: 0;
+  padding: 1rem;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .footer p {
-    text-align: center;
+  text-align: center;
 }
-/* Game */
+
+/* WelcomeForm */
 
 .welcomeForm {
-    width: 40%;
-    height: 50%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  width: 40%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .welcomeForm h2 {
-    font-size: 4rem;
-    padding: 2rem 0;
+  font-size: 4rem;
+  padding: 2rem 0;
 }
 
-#welcomeForm{
-    display: flex;flex-direction: column;
+#welcomeForm {
+  display: flex;
+  flex-direction: column;
 }
 
-#welcomeForm label{
-    font-size: 1.5rem;
-    margin-bottom: 0.75rem;
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.75rem;
+}
+
+#welcomeForm label {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
 #welcomeForm input {
-    padding: 0.75rem;
-    border: 1px solid black;
-    border-radius: 0.25rem;
-    transition: 0.3s all ease;
-    margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  transition: 0.3s all ease;
+  margin-bottom: 0.25rem;
 }
 
 #welcomeForm input:hover {
-    transform: scale(1.01);
+  transform: scale(1.01);
+}
+
+/* Boggle Game */
+
+.boggleGame {
+  display: flex;
+  width: 80%;
+  height: 10px;
 }
 
 /* Contact Form */
@@ -156,12 +193,7 @@ body {
   transform: scale(1.01);
 }
 
-.error {
-  color: red;
-  font-size: 0.95rem;
-}
-
-.form-container button {
+.button {
   margin-top: 1rem;
   background-color: #4238cb;
   cursor: pointer;
@@ -175,6 +207,17 @@ body {
   transition: 0.3s all ease;
 }
 
-.form-container button:hover {
+.button:hover {
   font-size: 1.25rem;
+}
+
+/* Utils */
+
+.hidden {
+  display: none !important;
+}
+
+.error {
+  color: red;
+  font-size: 0.95rem;
 }
