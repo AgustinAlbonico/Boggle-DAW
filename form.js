@@ -1,19 +1,21 @@
+'use strict'
 var d = document
 
 var contactForm = d.getElementById('contactForm')
 
-const nameInput = document.getElementById('name')
-const emailInput = document.getElementById('email')
-const messageInput = document.getElementById('message')
-const nameError = document.getElementById('nameError')
-const emailError = document.getElementById('emailError')
-const messageError = document.getElementById('messageError')
+var nameInput = document.getElementById('name')
+var emailInput = document.getElementById('email')
+var messageInput = document.getElementById('message')
+var nameError = document.getElementById('nameError')
+var emailError = document.getElementById('emailError')
+var messageError = document.getElementById('messageError')
 
-contactForm.addEventListener('submit', (e) => {
+var validateAndSendForm = function (e) {
   e.preventDefault()
 
   let valido = true
 
+  //Valido el nombre
   if (nameInput.value.trim() === '') {
     nameError.textContent = 'El nombre es obligatorio'
     valido = false
@@ -25,6 +27,7 @@ contactForm.addEventListener('submit', (e) => {
     nameError.textContent = ''
   }
 
+  //Valido el email
   if (emailInput.value.trim() === '') {
     emailError.textContent = 'El correo electrónico es obligatorio'
     valido = false
@@ -37,6 +40,7 @@ contactForm.addEventListener('submit', (e) => {
     emailError.textContent = ''
   }
 
+  //Valido el mensaje
   if (messageInput.value.trim().length < 5) {
     messageError.textContent = 'El mensaje debe tener al menos 5 caracteres'
     valido = false
@@ -44,9 +48,12 @@ contactForm.addEventListener('submit', (e) => {
     messageError.textContent = ''
   }
 
+  //Abro el email del sist. operativo con los datos del form
   if (valido) {
-    const email = `mailto:agusalbo2024@gmail.com?subject=Boggle-Contacto&body=${messageInput.value}`
+    var email = `mailto:agusalbo2024@gmail.com?subject=Boggle-Contacto&body=${messageInput.value}`
 
     window.location.href = email
   }
-})
+}
+
+contactForm.addEventListener('submit', validateAndSendForm)

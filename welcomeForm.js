@@ -1,12 +1,13 @@
 var d = document
 
-var welcomeForm = d.getElementById('welcomeForm')
-var boggleGame = d.querySelector(".boggleGame")
+var welcomeForm = d.querySelector('.welcomeForm')
+var boggleGame = d.querySelector('.boggleGame')
 
 var nameError = d.getElementById('nameError')
 var nameInput = d.getElementById('nameInput')
 
-welcomeForm.addEventListener('submit', (e) => {
+//Valida el nombre ingresado, cierra el formulario y abre el juego
+var validateAndOpenGame = function (e) {
   e.preventDefault()
 
   let valido = true
@@ -25,8 +26,10 @@ welcomeForm.addEventListener('submit', (e) => {
     nameError.textContent = ''
   }
 
-  if(valido) {
+  if (valido) {
     welcomeForm.classList.add('hidden')
-    boggleGame.classList.remove("hidden")
+    boggleGame.classList.remove('hidden')
   }
-})
+}
+
+welcomeForm.addEventListener('submit', validateAndOpenGame)

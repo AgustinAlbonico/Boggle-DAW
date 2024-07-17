@@ -1,3 +1,5 @@
+/* Generales */
+
 * {
   margin: 0;
   padding: 0;
@@ -17,6 +19,8 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+/* Navbar */
 
 .navbar {
   width: 100%;
@@ -58,6 +62,24 @@ body {
   font-size: 1.5rem;
 }
 
+#rankingButton {
+  background-color: #4238cb;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s all ease;
+}
+
+#rankingButton:hover {
+  transform: scale(1.1);
+}
+
+/* Footer */
+
 .footer {
   position: fixed;
   bottom: 0;
@@ -69,6 +91,7 @@ body {
 .footer p {
   text-align: center;
 }
+
 /* WelcomeForm */
 
 .welcomeForm {
@@ -92,7 +115,7 @@ body {
 .input-container {
   display: flex;
   flex-direction: column;
-    margin-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 #welcomeForm label {
@@ -115,8 +138,8 @@ body {
 /* Boggle Game */
 
 .boggleGame {
-  background-color: red;
-  width: 100%;
+  display: flex;
+  width: 80%;
   height: 10px;
 }
 
@@ -170,11 +193,6 @@ body {
   transform: scale(1.01);
 }
 
-.error {
-  color: red;
-  font-size: 0.95rem;
-}
-
 .button {
   margin-top: 1rem;
   background-color: #4238cb;
@@ -197,4 +215,9 @@ body {
 
 .hidden {
   display: none !important;
+}
+
+.error {
+  color: red;
+  font-size: 0.95rem;
 }
