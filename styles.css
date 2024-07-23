@@ -7,9 +7,9 @@
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   height: 100vh;
-  background-color: #f3f5f7;
+  background-color: #eae8e1;
 }
 
 .container {
@@ -95,16 +95,21 @@ body {
 /* WelcomeForm */
 
 .welcomeForm {
-  width: 40%;
-  height: 50%;
+  padding: 4rem 1.5rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 0.25rem;
 }
 
 .welcomeForm h2 {
   font-size: 4rem;
-  padding: 2rem 0;
+  padding: 0;
+  line-height: 4rem;
+  margin-bottom: 2rem;
 }
 
 #welcomeForm {
@@ -123,7 +128,8 @@ body {
   margin-bottom: 0.75rem;
 }
 
-#welcomeForm input {
+#welcomeForm input,
+#welcomeForm select {
   padding: 0.75rem;
   border: 1px solid black;
   border-radius: 0.25rem;
@@ -139,8 +145,33 @@ body {
 
 .boggleGame {
   display: flex;
-  width: 80%;
+  width: 90%;
   height: 10px;
+  height: 70%;
+  text-align: center;
+}
+
+.left-container {
+  height: 100%;
+  width: 25%;
+}
+
+.game {
+  height: 100%;
+  width: 50%;
+}
+
+.found-words {
+  height: 100%;
+  width: 25%;
+}
+
+.timer {
+  font-size: 1.75rem;
+}
+
+#time {
+  font-weight: bold;
 }
 
 /* Contact Form */
@@ -151,6 +182,7 @@ body {
   background-color: #fff;
   padding: 1rem 1.5rem;
   border-radius: 0.5rem;
+  border: 1px solid black;
 }
 
 .form-container h2 {
@@ -220,4 +252,8 @@ body {
 .error {
   color: red;
   font-size: 0.95rem;
+}
+
+.text-red {
+  color: red;
 }
