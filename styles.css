@@ -158,12 +158,7 @@ body {
 
 .game {
   height: 100%;
-  width: 50%;
-}
-
-.found-words {
-  height: 100%;
-  width: 25%;
+  width: 45%;
 }
 
 .timer {
@@ -171,6 +166,85 @@ body {
 }
 
 #time {
+  font-weight: bold;
+}
+
+#board {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem auto;
+  gap: 0.75rem;
+}
+
+.row {
+  height: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.cell {
+  background-color: #30638e;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #fff;
+  transition: 0.3s all;
+}
+
+.cell:hover {
+  opacity: 0.92;
+  transform: scale(1.05);
+}
+
+.game-text {
+  display: flex;
+  flex-direction: column;
+}
+
+#length-error {
+  color: #d1495b;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.current-word {
+  font-size: 1.5rem;
+}
+
+#current-word {
+  font-weight: bold;
+}
+
+.found-words {
+  height: 100%;
+  width: 30%;
+  position: relative;
+}
+
+#points-message {
+  position: absolute;
+  text-align: center;
+  top: -1.5rem;
+  left: 0;
+  right: 0;
+  font-weight: bold;
+  color: red;
+}
+
+.points-text {
+  font-size: 1.75rem;
+  font-weight: normal;
+}
+
+#points {
   font-weight: bold;
 }
 
@@ -227,7 +301,7 @@ body {
 
 .button {
   margin-top: 1rem;
-  background-color: #4238cb;
+  background-color: #003d5b;
   cursor: pointer;
   width: 100%;
   padding: 1rem 0;
@@ -250,10 +324,20 @@ body {
 }
 
 .error {
-  color: red;
+  color: #d1495b;
   font-size: 0.95rem;
 }
 
 .text-red {
-  color: red;
+  color: #d1495b;
 }
+
+.selected {
+  background-color: #00798c;
+  outline: 3px black solid;
+}
+
+.able-to-select {
+  background-color: #edae49;
+}
+

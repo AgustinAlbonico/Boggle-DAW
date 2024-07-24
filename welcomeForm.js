@@ -33,7 +33,6 @@ var validateAndOpenGame = function (e) {
   if (valido) {
     welcomeForm.classList.add("hidden");
     boggleGame.classList.remove("hidden");
-    gameStart = true;
     startGame()
   }
 };

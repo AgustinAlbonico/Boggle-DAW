@@ -1,70 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
-  <script src="
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css"
+    />
+    <script src="
   https://cdn.jsdelivr.net/npm/sweetalert2@11.12.3/dist/sweetalert2.all.min.js
   "></script>
-  <link href="
+    <link
+      href="
   https://cdn.jsdelivr.net/npm/sweetalert2@11.12.3/dist/sweetalert2.min.css
-  " rel="stylesheet">
-  
-  <title>Boggle</title>
-</head>
+  "
+      rel="stylesheet"
+    />
 
-<body>
-  <!-- Navbar -->
-  <nav class="navbar" id="navbar">
-    <div class="navbar-container">
-      <h1 class="logo"><a href="/">Boggle</a></h1>
-      <div class="links">
-        <a href="/">Inicio</a>
-        <a href="/contacto.html">Contacto</a>
-        <a href="https://github.com/AgustinAlbonico/Boggle-DAW" target="_blank">Repositorio</a>
-        <button id="rankingButton">Ranking</button>
-  </nav>
+    <title>Boggle</title>
+  </head>
 
-  <!-- Formulario de bienvenida -->
-  <div class="container">
-    <div class="welcomeForm">
-      <form id="welcomeForm">
-        <h2>Bienvenido!</h2>
-        <label for="name">Ingrese su nombre:</label>
-        <div class="input-container">
-          <input type="text" name="name" id="nameInput" placeholder="Tu nombre">
-          <span id="nameError" class="error"></span>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+      <div class="navbar-container">
+        <h1 class="logo"><a href="/">Boggle</a></h1>
+        <div class="links">
+          <a href="/">Inicio</a>
+          <a href="/contacto.html">Contacto</a>
+          <a
+            href="https://github.com/AgustinAlbonico/Boggle-DAW"
+            target="_blank"
+            >Repositorio</a
+          >
+          <button id="rankingButton">Ranking</button>
         </div>
-        <div class="input-container">
-          <label for="game-time">Tiempo de juego</label>
-          <select id="game-time">
-            <option value="1">1 minuto</option>
-            <option value="2">2 minutos</option>
-            <option value="3">3 minutos</option>
-          </select>
-        </div>
-        <button type="submit" class="button">Jugar!</button>
-      </form>
-    </div>
-    
-    <!-- Juego -->
-    <div class="boggleGame hidden">
-      <div class="left-container"></div>
-      <div class="game">
-        <span class="timer">Tiempo restante: <span id="time"></span></span>
-        <div id="board"></div>
-        <div class="buttons"></div>
       </div>
-      <div class="found-words"></div>
+    </nav>
+
+    <!-- Formulario de bienvenida -->
+    <div class="container">
+      <div class="welcomeForm">
+        <form id="welcomeForm">
+          <h2>Bienvenido!</h2>
+          <label for="name">Ingrese su nombre:</label>
+          <div class="input-container">
+            <input
+              type="text"
+              name="name"
+              id="nameInput"
+              placeholder="Tu nombre"
+            />
+            <span id="nameError" class="error"></span>
+          </div>
+          <div class="input-container">
+            <label for="game-time">Tiempo de juego</label>
+            <select id="game-time">
+              <option value="1">1 minuto</option>
+              <option value="2">2 minutos</option>
+              <option value="3">3 minutos</option>
+            </select>
+          </div>
+          <button type="submit" class="button">Jugar!</button>
+        </form>
+      </div>
+
+      <!-- Juego -->
+      <div class="boggleGame hidden">
+        <div class="left-container"></div>
+        <div class="game">
+          <span class="timer">Tiempo restante: <span id="time"></span></span>
+          <div id="board">
+            <div class="row" id="row-1">
+              <div class="cell" id="cell-1">A</div>
+              <div class="cell" id="cell-2">B</div>
+              <div class="cell" id="cell-3">C</div>
+              <div class="cell" id="cell-4">D</div>
+            </div>
+            <div class="row" id="row-2">
+              <div class="cell" id="cell-5">E</div>
+              <div class="cell" id="cell-6">F</div>
+              <div class="cell" id="cell-7">G</div>
+              <div class="cell" id="cell-8">H</div>
+            </div>
+            <div class="row" id="row-3">
+              <div class="cell" id="cell-9">I</div>
+              <div class="cell" id="cell-10"></div>
+              <div class="cell" id="cell-11"></div>
+              <div class="cell" id="cell-12"></div>
+            </div>
+            <div class="row" id="row-4">
+              <div class="cell" id="cell-13"></div>
+              <div class="cell" id="cell-14"></div>
+              <div class="cell" id="cell-15"></div>
+              <div class="cell" id="cell-16"></div>
+            </div>
+          </div>
+          <div class="game-text">
+            <span class="hidden" id="length-error"
+              >La palabra debe contener mas de 3 caracteres</span
+            >
+            <span class="current-word"
+              >Palabra formada: <span id="current-word"></span></span
+            >
+          </div>
+          <div class="buttons">
+            <div
+              class="button"
+              id="send-word"
+              style="width: 12rem; margin: 2rem auto 0 auto"
+            >
+              Enviar palabra
+            </div>
+            <div
+              class="button"
+              id="clear-word"
+              style="
+                background-color: #edae49;
+                width: 12rem;
+                margin: 1rem auto 0 auto;
+              "
+            >
+              Limpiar palabra
+            </div>
+          </div>
+        </div>
+        <div class="found-words">
+          <span id="points-message"></span>
+          <h2 class="points-text">Puntaje: <span id="points">0</span></h2>
+        </div>
+      </div>
     </div>
-  </div>
+
 
   <!-- Footer -->
   <footer class="footer">
@@ -75,5 +149,4 @@
   <script src="./welcomeForm.js"></script>
   <script src="./boggleGame.js"></script>
 </body>
-
 </html>
