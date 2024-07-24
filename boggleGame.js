@@ -32,7 +32,6 @@ var consonants = [
   "X",
   "Y",
   "Z",
-];
 
 //Variables
 ////Variable para saber cuando el juego esta activo y cuando no
