@@ -209,7 +209,7 @@ body {
   flex-direction: column;
 }
 
-#length-error {
+#game-error {
   color: #d1495b;
   font-weight: 600;
   margin-bottom: 0.5rem;
@@ -242,9 +242,15 @@ body {
 .points-text {
   font-size: 1.75rem;
   font-weight: normal;
+  margin-bottom: 1rem;
 }
 
 #points {
+  font-weight: bold;
+}
+
+#found-words-container {
+  list-style: none;
   font-weight: bold;
 }
 
