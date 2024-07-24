@@ -209,7 +209,7 @@ body {
   flex-direction: column;
 }
 
-#length-error {
+#game-error {
   color: #d1495b;
   font-weight: 600;
   margin-bottom: 0.5rem;
@@ -242,10 +242,22 @@ body {
 .points-text {
   font-size: 1.75rem;
   font-weight: normal;
+  margin-bottom: 1rem;
 }
 
 #points {
   font-weight: bold;
+}
+
+#found-words-container {
+  list-style: none;
+  font-weight: bold;
+}
+
+/* Ranking */
+
+#rankingTable {
+  width: 100%;
 }
 
 /* Contact Form */
@@ -333,11 +345,17 @@ body {
 }
 
 .selected {
-  background-color: #00798c;
-  outline: 3px black solid;
+  background-color: #9AE19D;
+}
+
+.last-selected {
+  outline: 2px black solid;
 }
 
 .able-to-select {
   background-color: #edae49;
 }
 
+.disabled {
+  cursor: default;
+}

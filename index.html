@@ -79,37 +79,35 @@
           <span class="timer">Tiempo restante: <span id="time"></span></span>
           <div id="board">
             <div class="row" id="row-1">
-              <div class="cell" id="cell-1">A</div>
-              <div class="cell" id="cell-2">B</div>
-              <div class="cell" id="cell-3">C</div>
-              <div class="cell" id="cell-4">D</div>
+              <button class="cell" id="cell-1"></button>
+              <button class="cell" id="cell-2"></button>
+              <button class="cell" id="cell-3"></button>
+              <button class="cell" id="cell-4"></button>
             </div>
             <div class="row" id="row-2">
-              <div class="cell" id="cell-5">E</div>
-              <div class="cell" id="cell-6">F</div>
-              <div class="cell" id="cell-7">G</div>
-              <div class="cell" id="cell-8">H</div>
+              <button class="cell" id="cell-5"></button>
+              <button class="cell" id="cell-6"></button>
+              <button class="cell" id="cell-7"></button>
+              <button class="cell" id="cell-8"></button>
             </div>
             <div class="row" id="row-3">
-              <div class="cell" id="cell-9">I</div>
-              <div class="cell" id="cell-10"></div>
-              <div class="cell" id="cell-11"></div>
-              <div class="cell" id="cell-12"></div>
+              <button class="cell" id="cell-9"></button>
+              <button class="cell" id="cell-10"></button>
+              <button class="cell" id="cell-11"></button>
+              <button class="cell" id="cell-12"></button>
             </div>
             <div class="row" id="row-4">
-              <div class="cell" id="cell-13"></div>
-              <div class="cell" id="cell-14"></div>
-              <div class="cell" id="cell-15"></div>
-              <div class="cell" id="cell-16"></div>
+              <button class="cell" id="cell-13"></button>
+              <button class="cell" id="cell-14"></button>
+              <button class="cell" id="cell-15"></button>
+              <button class="cell" id="cell-16"></button>
             </div>
           </div>
           <div class="game-text">
-            <span class="hidden" id="length-error"
-              >La palabra debe contener mas de 3 caracteres</span
-            >
+            <span class="hidden" id="game-error"></span>
             <span class="current-word"
-              >Palabra formada: <span id="current-word"></span></span
-            >
+              >Palabra formada: <span id="current-word"></span
+            ></span>
           </div>
           <div class="buttons">
             <div
@@ -135,6 +133,7 @@
         <div class="found-words">
           <span id="points-message"></span>
           <h2 class="points-text">Puntaje: <span id="points">0</span></h2>
+          <ul id="found-words-container"></ul>
         </div>
       </div>
     </div>

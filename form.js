@@ -1,4 +1,5 @@
 'use strict'
+
 var d = document
 
 var contactForm = d.getElementById('contactForm')
