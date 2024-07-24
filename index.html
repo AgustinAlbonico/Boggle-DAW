@@ -9,11 +9,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
     rel="stylesheet" />
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
+  <script src="
+  https://cdn.jsdelivr.net/npm/sweetalert2@11.12.3/dist/sweetalert2.all.min.js
+  "></script>
+  <link href="
+  https://cdn.jsdelivr.net/npm/sweetalert2@11.12.3/dist/sweetalert2.min.css
+  " rel="stylesheet">
+  
   <title>Boggle</title>
 </head>
 
 <body>
+  <!-- Navbar -->
   <nav class="navbar" id="navbar">
     <div class="navbar-container">
       <h1 class="logo"><a href="/">Boggle</a></h1>
@@ -23,6 +31,8 @@
         <a href="https://github.com/AgustinAlbonico/Boggle-DAW" target="_blank">Repositorio</a>
         <button id="rankingButton">Ranking</button>
   </nav>
+
+  <!-- Formulario de bienvenida -->
   <div class="container">
     <div class="welcomeForm">
       <form id="welcomeForm">
@@ -32,22 +42,36 @@
           <input type="text" name="name" id="nameInput" placeholder="Tu nombre">
           <span id="nameError" class="error"></span>
         </div>
+        <div class="input-container">
+          <label for="game-time">Tiempo de juego</label>
+          <select id="game-time">
+            <option value="1">1 minuto</option>
+            <option value="2">2 minutos</option>
+            <option value="3">3 minutos</option>
+          </select>
+        </div>
         <button type="submit" class="button">Jugar!</button>
       </form>
     </div>
-
+    
+    <!-- Juego -->
     <div class="boggleGame hidden">
+      <div class="left-container"></div>
       <div class="game">
-        <span class="timer">Tiempo restante: </span>
-        
+        <span class="timer">Tiempo restante: <span id="time"></span></span>
+        <div id="board"></div>
+        <div class="buttons"></div>
       </div>
       <div class="found-words"></div>
     </div>
   </div>
 
+  <!-- Footer -->
   <footer class="footer">
     <p>&copy; 2024 Your Company Name. All rights reserved.</p>
   </footer>
+
+  <!-- Scripts -->
   <script src="./welcomeForm.js"></script>
   <script src="./boggleGame.js"></script>
 </body>
