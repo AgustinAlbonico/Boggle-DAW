@@ -339,11 +339,17 @@ body {
 }
 
 .selected {
-  background-color: #00798c;
-  outline: 3px black solid;
+  background-color: #9AE19D;
+}
+
+.last-selected {
+  outline: 2px black solid;
 }
 
 .able-to-select {
   background-color: #edae49;
 }
 
+.disabled {
+  cursor: default;
+}
