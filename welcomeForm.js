@@ -1,3 +1,5 @@
+"use strict";
+
 var d = document;
 
 var welcomeForm = d.querySelector(".welcomeForm");
@@ -33,7 +35,7 @@ var validateAndOpenGame = function (e) {
   if (valido) {
     welcomeForm.classList.add("hidden");
     boggleGame.classList.remove("hidden");
-    startGame()
+    startGame();
   }
 };
 
@@ -41,15 +43,50 @@ welcomeForm.addEventListener("submit", validateAndOpenGame);
 
 // Mostrar ranking modal
 function showRanking() {
-  //var results = JSON.parse(localStorage.getItem("results") || []);
-  var rankingContainer = d.createElement("div");
-
+  let tabla = crearTabla();
   Swal.fire({
     title: "Ranking",
-    text: "asdads",
-    width: 600,
-    padding: "48px",
+    html: tabla.outerHTML,
+    width: "600px",
+    showCloseButton: true,
+    focusConfirm: false,
   });
+}
+
+const listaJuegos = JSON.parse(localStorage.getItem('savegame') || []);
+
+function crearTabla() {
+  let tabla = document.createElement("table");
+  let thead = tabla.createTHead();
+  let tbody = tabla.createTBody();
+
+  tabla.id = "rankingTable"
+
+  let cabeceras = ["Usuario", "Fecha", "Puntaje", "Tiempo"];
+  let filaCabecera = thead.insertRow();
+
+  cabeceras.forEach((cabecera) => {
+    let th = document.createElement("th");
+    th.textContent = cabecera;
+    filaCabecera.appendChild(th);
+  });
+
+  console.log(listaJuegos)
+
+  listaJuegos.forEach((juego) => {
+    let fila = tbody.insertRow();
+    let celdaUsuario = fila.insertCell(0);
+    let celdaFecha = fila.insertCell(1);
+    let celdaPuntaje = fila.insertCell(2);
+    let celdaTiempo = fila.insertCell(3);
+
+    celdaUsuario.textContent = juego.username;
+    celdaFecha.textContent = juego.date;
+    celdaPuntaje.textContent = juego.score;
+    celdaTiempo.textContent = juego.time ;
+  });
+
+  return tabla;
 }
 
 rankingButton.addEventListener("click", showRanking);

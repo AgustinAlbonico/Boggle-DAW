@@ -254,6 +254,12 @@ body {
   font-weight: bold;
 }
 
+/* Ranking */
+
+#rankingTable {
+  width: 100%;
+}
+
 /* Contact Form */
 
 .form-container {

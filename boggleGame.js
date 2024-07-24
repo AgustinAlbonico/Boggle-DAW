@@ -1,3 +1,5 @@
+'use strict'
+
 //Elementos del DOM
 var time = d.getElementById("time");
 var currentWordDom = d.getElementById("current-word");
@@ -237,7 +239,7 @@ function initializeBoard() {
   // Selecciona 6 vocales aleatorias
   var selectedVowels = [];
   for (var i = 0; i < 6; i++) {
-    selectedVowels.push(vowels[Math.floor(Math.random() * vowels.length)]);
+    selectedVowels.push(vowels[Math.floor(Math.vdom() * vowels.length)]);
   }
 
   // Selecciona exactamente 10 consonantes aleatorias
