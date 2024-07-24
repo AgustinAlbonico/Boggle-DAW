@@ -43,7 +43,7 @@ welcomeForm.addEventListener("submit", validateAndOpenGame);
 
 // Mostrar ranking modal
 function showRanking() {
-  let tabla = crearTabla();
+  var tabla = crearTabla();
   Swal.fire({
     title: "Ranking",
     html: tabla.outerHTML,
@@ -56,17 +56,17 @@ function showRanking() {
 const listaJuegos = JSON.parse(localStorage.getItem('savegame') || []);
 
 function crearTabla() {
-  let tabla = document.createElement("table");
-  let thead = tabla.createTHead();
-  let tbody = tabla.createTBody();
+  var tabla = document.createElement("table");
+  var thead = tabla.createTHead();
+  var tbody = tabla.createTBody();
 
   tabla.id = "rankingTable"
 
-  let cabeceras = ["Usuario", "Fecha", "Puntaje", "Tiempo"];
-  let filaCabecera = thead.insertRow();
+  var cabeceras = ["Usuario", "Fecha", "Puntaje", "Tiempo"];
+  var filaCabecera = thead.insertRow();
 
   cabeceras.forEach((cabecera) => {
-    let th = document.createElement("th");
+    var th = document.createElement("th");
     th.textContent = cabecera;
     filaCabecera.appendChild(th);
   });
@@ -74,16 +74,16 @@ function crearTabla() {
   console.log(listaJuegos)
 
   listaJuegos.forEach((juego) => {
-    let fila = tbody.insertRow();
-    let celdaUsuario = fila.insertCell(0);
-    let celdaFecha = fila.insertCell(1);
-    let celdaPuntaje = fila.insertCell(2);
-    let celdaTiempo = fila.insertCell(3);
+    var fila = tbody.insertRow();
+    var celdaUsuario = fila.insertCell(0);
+    var celdaFecha = fila.insertCell(1);
+    var celdaPuntaje = fila.insertCell(2);
+    var celdaTiempo = fila.insertCell(3);
 
     celdaUsuario.textContent = juego.username;
     celdaFecha.textContent = juego.date;
     celdaPuntaje.textContent = juego.score;
-    celdaTiempo.textContent = juego.time ;
+    celdaTiempo.textContent = juego.time == 1 ? juego.time + ' minuto' : juego.time + ' minutos';
   });
 
   return tabla;

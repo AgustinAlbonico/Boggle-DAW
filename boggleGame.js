@@ -116,6 +116,7 @@ async function sendWord() {
     handleError("Error al verificar la palabra");
   } finally {
     sendWordButton.disabled = false;
+    resetCurrentWord()
     resetCellsStyle()
   }
 }
@@ -239,7 +240,7 @@ function initializeBoard() {
   // Selecciona 6 vocales aleatorias
   var selectedVowels = [];
   for (var i = 0; i < 6; i++) {
-    selectedVowels.push(vowels[Math.floor(Math.vdom() * vowels.length)]);
+    selectedVowels.push(vowels[Math.floor(Math.random() * vowels.length)]);
   }
 
   // Selecciona exactamente 10 consonantes aleatorias
