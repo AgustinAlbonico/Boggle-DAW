@@ -10,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./normalize.css"/>
     <title>Boggle - Contacto</title>
   </head>
   <body>
@@ -25,6 +26,29 @@
             target="_blank"
             >Repositorio</a
           >
+        </div>
+      </div>
+    </nav>
+
+    <nav class="mobile-navbar" id="mobile-navbar">
+      <div class="navbar-container">
+        <h1 class="logo"><a href="/">Boggle</a></h1>
+        <div class="mobile-buttons">
+          <button id="open-menu-button">☰</button>
+          <button class="hidden" id="close-menu-button">X</button>
+        </div>
+      </div>
+      <div class="mobile-navbar-links hidden" id="mobile-navbar-links">
+        <div class="links-container">
+          <a href="/" class="mobile-navbar-item">Inicio</a>
+          <a href="/contacto.html" class="mobile-navbar-item">Contacto</a>
+          <a
+            href="https://github.com/AgustinAlbonico/Boggle-DAW"
+            target="_blank"
+            class="mobile-navbar-item"
+            >Repositorio</a
+          >
+          <button id="rankingButton" class="mobile-navbar-item">Ranking</button>
         </div>
       </div>
     </nav>
@@ -67,10 +91,11 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+      <p>&copy; 2024 Agustín Albónico & Nicolas Di Domenico. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Scripts -->
     <script src="./form.js"></script>
+    <script src="./mobileNavbar.js"></script>
   </body>
 </html>

@@ -11,6 +11,9 @@ var nameInput = d.getElementById("nameInput");
 var gameTime = d.getElementById("game-time");
 
 var rankingButton = d.getElementById("rankingButton");
+var rankingButtonMobile = d.getElementById("rankingButtonMobile");
+
+var listaJuegos = JSON.parse(localStorage.getItem("savegame") || "[]");
 
 //Valida el nombre ingresado, cierra el formulario y abre el juego
 var validateAndOpenGame = function (e) {
@@ -53,14 +56,12 @@ function showRanking() {
   });
 }
 
-const listaJuegos = JSON.parse(localStorage.getItem('savegame') || []);
-
 function crearTabla() {
   var tabla = document.createElement("table");
   var thead = tabla.createTHead();
   var tbody = tabla.createTBody();
 
-  tabla.id = "rankingTable"
+  tabla.id = "rankingTable";
 
   var cabeceras = ["Usuario", "Fecha", "Puntaje", "Tiempo"];
   var filaCabecera = thead.insertRow();
@@ -70,8 +71,6 @@ function crearTabla() {
     th.textContent = cabecera;
     filaCabecera.appendChild(th);
   });
-
-  console.log(listaJuegos)
 
   listaJuegos.forEach((juego) => {
     var fila = tbody.insertRow();
@@ -83,10 +82,12 @@ function crearTabla() {
     celdaUsuario.textContent = juego.username;
     celdaFecha.textContent = juego.date;
     celdaPuntaje.textContent = juego.score;
-    celdaTiempo.textContent = juego.time == 1 ? juego.time + ' minuto' : juego.time + ' minutos';
+    celdaTiempo.textContent =
+      juego.time == 1 ? juego.time + " minuto" : juego.time + " minutos";
   });
 
   return tabla;
 }
 
 rankingButton.addEventListener("click", showRanking);
+rankingButtonMobile.addEventListener("click", showRanking);
