@@ -57,36 +57,48 @@ function showRanking() {
 }
 
 function crearTabla() {
-  var tabla = document.createElement("table");
-  var thead = tabla.createTHead();
-  var tbody = tabla.createTBody();
+  var table = document.createElement("table");
+  var thead = document.createElement("thead");
+  var tbody = document.createElement("tbody"); 
 
-  tabla.id = "rankingTable";
+  table.id = "rankingTable"; 
+  table.appendChild(thead); 
+  table.appendChild(tbody); 
 
+  // Crear fila de cabecera
   var cabeceras = ["Usuario", "Fecha", "Puntaje", "Tiempo"];
-  var filaCabecera = thead.insertRow();
+
+  var trCabecera = document.createElement("tr");
+  thead.appendChild(trCabecera);
 
   cabeceras.forEach((cabecera) => {
     var th = document.createElement("th");
     th.textContent = cabecera;
-    filaCabecera.appendChild(th);
+    trCabecera.appendChild(th);
   });
 
+  // Crear filas de partidas jugadas
   listaJuegos.forEach((juego) => {
-    var fila = tbody.insertRow();
-    var celdaUsuario = fila.insertCell(0);
-    var celdaFecha = fila.insertCell(1);
-    var celdaPuntaje = fila.insertCell(2);
-    var celdaTiempo = fila.insertCell(3);
+    var trCuerpo = document.createElement("tr");
+    tbody.appendChild(trCuerpo); 
 
-    celdaUsuario.textContent = juego.username;
-    celdaFecha.textContent = juego.date;
-    celdaPuntaje.textContent = juego.score;
-    celdaTiempo.textContent =
-      juego.time == 1 ? juego.time + " minuto" : juego.time + " minutos";
+    var tdUsuario = document.createElement("td");
+    var tdFecha = document.createElement("td");
+    var tdPuntaje = document.createElement("td");
+    var tdTiempo = document.createElement("td");
+
+    tdUsuario.textContent = juego.username;
+    tdFecha.textContent = juego.date;
+    tdPuntaje.textContent = juego.score;
+    tdTiempo.textContent = juego.time == 1 ? juego.time + " minuto" : juego.time + " minutos";
+
+    trCuerpo.appendChild(tdUsuario); 
+    trCuerpo.appendChild(tdFecha);
+    trCuerpo.appendChild(tdPuntaje);
+    trCuerpo.appendChild(tdTiempo);
   });
 
-  return tabla;
+  return table;
 }
 
 rankingButton.addEventListener("click", showRanking);
