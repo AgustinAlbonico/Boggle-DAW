@@ -1,7 +1,9 @@
-'use strict'
+'use strict';
 
-//Elementos del DOM
+// Elementos del DOM
+var d = document;
 var time = d.getElementById("time");
+var gameTime = d.getElementById("game-time");
 var currentWordDom = d.getElementById("current-word");
 var sendWordButton = d.getElementById("send-word");
 var clearWordButton = d.getElementById("clear-word");
@@ -13,65 +15,44 @@ var foundWordsContainerDom = d.getElementById("found-words-container");
 var selectedCells = [];
 var allCells = [];
 
-//Constantes
+// Constantes
 var vowels = ["A", "E", "I", "O", "U"];
 var consonants = [
-  "B",
-  "C",
-  "D",
-  "F",
-  "G",
-  "H",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
+  "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"
 ];
 
-//Variables
-////Variable para saber cuando el juego esta activo y cuando no
+// Variables
+//// Variable para saber cuando el juego esta activo y cuando no
 var gameStart = false;
-////Contador del tiempo restante de un juego
+//// Contador del tiempo restante de un juego
 var remainingTime;
 var currentWord = "";
-////Variable para ir almacenando el puntaje de un juego
+//// Variable para ir almacenando el puntaje de un juego
 var totalScore;
-////Intervalo para cada segundo del timer
-var timer;
-////Variable para guardar las palabras encontradas
+//// Intervalo para cada segundo del timer
+var intervalID;
+//// Variable para guardar las palabras encontradas
 var foundWords;
 
-//Funcion que empieza el juego
+// Funcion que empieza el juego
 function startGame() {
   time.classList.remove("text-red");
   gameStart = true;
-  remainingTime = parseInt(gameTime.value, 10) * 60;
+  remainingTime = Number(gameTime.value) * 60;
   time.textContent = remainingTime;
-  totalScore = 0;
-  foundWords = []
+  foundWords = [];
 
-  resetSecondaryPanel()
+  resetSecondaryPanel();
   resetCurrentWord();
   initializeBoard();
 
-  timer = setInterval(handleTimer, 1000);
+  intervalID = setInterval(handleTimer, 1000);
 }
 
-//Funcion para manejar el temporizador
+// Funcion para manejar el temporizador
 function handleTimer() {
   if (remainingTime === 0) {
-    clearInterval(timer);
+    clearInterval(intervalID);
     gameStart = false;
     showScore();
     saveGameData();
@@ -83,45 +64,42 @@ function handleTimer() {
   remainingTime--;
 }
 
-//Funcion para guardar en localStorage los datos del jugador y una partida
+// Funcion para guardar en localStorage los datos del jugador y una partida
 function saveGameData() {
   var savegame = JSON.parse(localStorage.getItem("savegame") || "[]");
   savegame.push({
     username: nameInput.value,
     score: totalScore,
     date: new Date().toLocaleString(),
-    time: gameTime.value,
+    time: gameTime.value
   });
   var formatedSavegame = JSON.stringify(savegame);
   localStorage.setItem("savegame", formatedSavegame);
 }
 
-//Funcion que valida la palabra ingresada en una api
+// Funcion que valida la palabra ingresada en una api
 async function sendWord() {
   try {
     sendWordButton.disabled = true;
-    //Muestro el mensaje de error de palabra menor a 3 caracteres por un ratito y lo saco
+    // Muestro el mensaje de error de palabra menor a 3 caracteres por un ratito y lo saco
     if (currentWord.length < 3) {
       showGameErrorMessage("La palabra debe contener mas de 3 caracteres");
-    } else if (foundWords.includes(currentWord)) {
+    } else if (foundWords.indexOf(currentWord) !== -1) {
       showGameErrorMessage("La palabra ya ha sido ingresada");
     } else {
       gameErrorMessage.classList.add("hidden");
-      var res = await fetch(
-        `https://api.dictionaryapi.dev/api/v2/entries/en/${currentWord}`
-      );
+      var res = await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + currentWord);
       handleSubmitWord(res.ok);
     }
   } catch (error) {
     handleError("Error al verificar la palabra");
   } finally {
     sendWordButton.disabled = false;
-    resetCurrentWord()
-    resetCellsStyle()
+    resetCurrentWord();
   }
 }
 
-//Funcion que se encarga de realizar la logica correspondiente segun si la palabra ingresa fue correcta o incorrecta
+// Funcion que se encarga de realizar la logica correspondiente segun si la palabra ingresa fue correcta o incorrecta
 function handleSubmitWord(isValid) {
   if (isValid) {
     if (currentWord.length === 3 || currentWord.length === 4) {
@@ -144,16 +122,18 @@ function handleSubmitWord(isValid) {
       totalScore = totalScore + 11;
       messagePoints(11);
     }
+    showGameErrorMessage("Correcto!");
     addWordToFound();
   } else {
+    showGameErrorMessage("Incorrecto!")
     totalScore = totalScore - 1;
-    messagePoints(-1, "#d1495b");
+    messagePoints(-1);
   }
   pointsDom.textContent = totalScore;
   resetCurrentWord();
 }
 
-//Funcion general para mostrar modal de error
+// Funcion general para mostrar modal de error
 function handleError(msjError) {
   Swal.fire({
     position: "top",
@@ -163,21 +143,21 @@ function handleError(msjError) {
     width: 300,
     padding: "12",
     timer: "750",
-    showConfirmButton: false,
+    showConfirmButton: false
   });
 }
 
-//Funcion que muestra el puntaje del jugador una vez que finaliza el temporizador
+// Funcion que muestra el puntaje del jugador una vez que finaliza el temporizador
 function showScore() {
   Swal.fire({
     title: "Finalizó el juego",
-    text: `Su puntaje: ${totalScore}`,
+    text: "Su puntaje: " + totalScore,
     icon: "info",
     confirmButtonColor: "#3085d6",
     confirmButtonText: "Jugar de nuevo",
     showCancelButton: true,
-    cancelButtonColor: "#d33",
-  }).then((result) => {
+    cancelButtonColor: "#d33"
+  }).then(function(result) {
     if (result.isConfirmed) {
       startGame();
     } else {
@@ -186,44 +166,48 @@ function showScore() {
   });
 }
 
-//Funcion para resetar la palabra ingresada
+// Funcion para resetar la palabra ingresada
 function resetCurrentWord() {
   currentWord = "";
-  selectedCells = []
+  selectedCells = [];
   currentWordDom.textContent = currentWord;
-  /* gameErrorMessage.classList.add("hidden"); */
-  resetCellsStyle()
+  /* gameErrorMessage.classList.add("hidden"); */ /* Agregarlo da error */
+  resetCellsStyle();
 }
 
-//Funcion que muestra el puntaje segun una palabra ingresada
-function messagePoints(points, color = "#00798C") {
+// Funcion que muestra el puntaje segun una palabra ingresada
+function messagePoints(points) {
   if (points > 0) {
-    pointsMessage.textContent = `+${points} puntos!`;
-    pointsMessage.style.color = color;
-    setTimeout(() => {
+    pointsMessage.textContent = "+" + points + " puntos!";
+    pointsMessage.style.color = "#00798C"; /* "Verde" */
+    setTimeout(function() {
       pointsMessage.textContent = "";
     }, 1200);
   } else {
-    pointsMessage.textContent = `${points} puntos!`;
-    pointsMessage.style.color = color;
-    setTimeout(() => {
+    pointsMessage.textContent = points + " puntos!";
+    pointsMessage.style.color = "#d1495b"; /* "Rojo" */
+    setTimeout(function() {
       pointsMessage.textContent = "";
     }, 1200);
   }
 }
 
-//Funcion que muestra error del juego
+// Funcion que muestra error del juego
 function showGameErrorMessage(msg) {
   gameErrorMessage.classList.remove("hidden");
   gameErrorMessage.textContent = msg;
-  setTimeout(() => {
+  if (msg === "Correcto!"){
+    gameErrorMessage.style.color = "#00798C"; /* "Verde" */ 
+  }
+  setTimeout(function() {
     gameErrorMessage.classList.add("hidden");
     gameErrorMessage.textContent = "";
+    gameErrorMessage.style.removeProperty('color');
   }, 1500);
   return;
 }
 
-//Funcion que agrega la palabra encontrada a la lista de palabras encontradas y tambien lo muestra en el dom
+// Funcion que agrega la palabra encontrada a la lista de palabras encontradas y tambien lo muestra en el dom
 function addWordToFound() {
   foundWords.push(currentWord);
   var liFoundWordElement = d.createElement("li");
@@ -231,12 +215,13 @@ function addWordToFound() {
   foundWordsContainerDom.appendChild(liFoundWordElement);
 }
 
-//Funcion que inicializa el tablero
+// Funcion que inicializa el tablero
 function initializeBoard() {
-  selectedCells = [];
+  /* selectedCells = []; */ /* Duplciado, ya lo hace resetCurrentWord() */
   allCells = [];
-  resetCellsStyle();
+  /* resetCellsStyle(); */ /* Duplciado, ya lo hace resetCurrentWord() */
 
+  // Armo el tablero
   // Selecciona 6 vocales aleatorias
   var selectedVowels = [];
   for (var i = 0; i < 6; i++) {
@@ -253,10 +238,12 @@ function initializeBoard() {
 
   // Combina y mezcla las letras
   var boardLetters = selectedVowels.concat(selectedConsonants);
-  boardLetters = boardLetters.sort(() => Math.random() - 0.5);
-
-  for (let i = 1; i <= 16; i++) {
-    var cell = d.getElementById(`cell-${i}`);
+  boardLetters = boardLetters.sort(function() {
+    return Math.random() - 0.5;
+  });
+  
+  for (var i = 1; i <= 16; i++) {
+    var cell = d.getElementById("cell-" + i);
     cell.textContent = boardLetters[i - 1];
     cell.addEventListener("click", handleCellClick);
     allCells.push(cell);
@@ -267,7 +254,7 @@ function initializeBoard() {
 function handleCellClick(event) {
   var cell = event.target;
 
-  if (selectedCells.includes(cell)) {
+  if (selectedCells.indexOf(cell) !== -1) {
     return;
   }
 
@@ -280,23 +267,23 @@ function handleCellClick(event) {
   }
 
   // Restablece el color original de todas las celdas adyacentes no seleccionadas
-  allCells.forEach(function (adjacentCell) {
-    if (!selectedCells.includes(adjacentCell)) {
+  allCells.forEach(function(adjacentCell) {
+    if (selectedCells.indexOf(adjacentCell) === -1) {
       adjacentCell.classList.remove("able-to-select");
     }
   });
 
   // Añade las clases 'selected'
   cell.classList.add("selected");
-  cell.classList.add("last-selected")
+  cell.classList.add("last-selected");
   selectedCells.push(cell);
   currentWord += cell.textContent;
   currentWordDom.textContent = currentWord;
 
   // Obtiene las celdas adyacentes y marca las seleccionables
   var adjacentCells = getAdjacentCells(cell);
-  adjacentCells.forEach(function (adjacentCell) {
-    if (!selectedCells.includes(adjacentCell)) {
+  adjacentCells.forEach(function(adjacentCell) {
+    if (selectedCells.indexOf(adjacentCell) === -1) {
       adjacentCell.classList.add("able-to-select");
     }
   });
@@ -313,7 +300,6 @@ function getAdjacentCells(cell) {
   for (var i = Math.max(0, row - 1); i <= Math.min(row + 1, 3); i++) {
     for (var j = Math.max(0, col - 1); j <= Math.min(col + 1, 3); j++) {
       if (!(i === row && j === col)) {
-        // No incluir la celda actual
         adjacentCells.push(allCells[i * 4 + j]);
       }
     }
@@ -333,10 +319,10 @@ function isAdjacent(cell1, cell2) {
   return Math.abs(row1 - row2) <= 1 && Math.abs(col1 - col2) <= 1;
 }
 
-//Funcion que reinicia todos los estilos de las celdas en caso de jugar de nuevo
+// Funcion que reinicia todos los estilos de las celdas en caso de jugar de nuevo
 function resetCellsStyle() {
-  for (let i = 1; i <= 16; i++) {
-    var cell = d.getElementById(`cell-${i}`);
+  for (var i = 1; i <= 16; i++) {
+    var cell = d.getElementById("cell-" + i);
     cell.classList.remove("selected");
     cell.classList.remove("last-selected");
     cell.classList.remove("able-to-select");
@@ -344,20 +330,13 @@ function resetCellsStyle() {
   }
 }
 
-//Funcionar para reiniciar el puntaje y las palabras anteriores de la partida anterior
+// Funcion para reiniciar puntaje y palabras encontardas
 function resetSecondaryPanel() {
-  pointsDom.textContent = totalScore
-  //Elimino todos las palabras encontradas del dom
-  while(foundWordsContainerDom.firstChild) {
-    foundWordsContainerDom.firstChild.remove()
-  }
+  totalScore = 0;
+  pointsDom.textContent = totalScore;
+  foundWordsContainerDom.innerHTML = '';
 }
 
-//Eventos
-sendWordButton.addEventListener("click", () => {
-  sendWord();
-});
-
-clearWordButton.addEventListener("click", () => {
-  resetCurrentWord();
-});
+// Eventos
+sendWordButton.addEventListener("click", sendWord);
+clearWordButton.addEventListener("click", resetCurrentWord);

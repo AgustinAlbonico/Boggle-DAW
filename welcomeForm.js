@@ -8,25 +8,24 @@ var boggleGame = d.querySelector(".boggleGame");
 var nameError = d.getElementById("nameError");
 var nameInput = d.getElementById("nameInput");
 
-var gameTime = d.getElementById("game-time");
+/* var gameTime = d.getElementById("game-time"); */
 
 var rankingButton = d.getElementById("rankingButton");
 var rankingButtonMobile = d.getElementById("rankingButtonMobile");
 
 var listaJuegos = JSON.parse(localStorage.getItem("savegame") || "[]");
 
-//Valida el nombre ingresado, cierra el formulario y abre el juego
+// Valida el nombre ingresado, cierra el formulario y abre el juego
 var validateAndOpenGame = function (e) {
   e.preventDefault();
 
-  let valido = true;
+  var valido = true;
 
   if (nameInput.value.trim() === "") {
     nameError.textContent = "El nombre es obligatorio";
     valido = false;
   } else if (!/^[a-zA-Z0-9 ]+$/.test(nameInput.value)) {
-    nameError.textContent =
-      "El nombre solo puede contener letras, números y espacios";
+    nameError.textContent = "El nombre solo puede contener letras, números y espacios";
     valido = false;
   } else if (nameInput.value.length < 3) {
     nameError.textContent = "El nombre debe tener como minimo 3 caracteres";
@@ -52,18 +51,18 @@ function showRanking() {
     html: tabla.outerHTML,
     width: "600px",
     showCloseButton: true,
-    focusConfirm: false,
+    focusConfirm: false
   });
 }
 
 function crearTabla() {
   var table = document.createElement("table");
   var thead = document.createElement("thead");
-  var tbody = document.createElement("tbody"); 
+  var tbody = document.createElement("tbody");
 
-  table.id = "rankingTable"; 
-  table.appendChild(thead); 
-  table.appendChild(tbody); 
+  table.id = "rankingTable";
+  table.appendChild(thead);
+  table.appendChild(tbody);
 
   // Crear fila de cabecera
   var cabeceras = ["Usuario", "Fecha", "Puntaje", "Tiempo"];
@@ -71,16 +70,16 @@ function crearTabla() {
   var trCabecera = document.createElement("tr");
   thead.appendChild(trCabecera);
 
-  cabeceras.forEach((cabecera) => {
+  cabeceras.forEach(function(cabecera) {
     var th = document.createElement("th");
     th.textContent = cabecera;
     trCabecera.appendChild(th);
   });
 
   // Crear filas de partidas jugadas
-  listaJuegos.forEach((juego) => {
+  listaJuegos.forEach(function(juego) {
     var trCuerpo = document.createElement("tr");
-    tbody.appendChild(trCuerpo); 
+    tbody.appendChild(trCuerpo);
 
     var tdUsuario = document.createElement("td");
     var tdFecha = document.createElement("td");
@@ -92,7 +91,7 @@ function crearTabla() {
     tdPuntaje.textContent = juego.score;
     tdTiempo.textContent = juego.time == 1 ? juego.time + " minuto" : juego.time + " minutos";
 
-    trCuerpo.appendChild(tdUsuario); 
+    trCuerpo.appendChild(tdUsuario);
     trCuerpo.appendChild(tdFecha);
     trCuerpo.appendChild(tdPuntaje);
     trCuerpo.appendChild(tdTiempo);
