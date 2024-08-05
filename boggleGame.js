@@ -7,21 +7,19 @@ var gameTime = d.getElementById("game-time");
 var currentWordDom = d.getElementById("current-word");
 var sendWordButton = d.getElementById("send-word");
 var clearWordButton = d.getElementById("clear-word");
-var cell = d.querySelectorAll(".cell");
+/* var cell = d.querySelectorAll(".cell"); */ /* Para mi está de mas */
 var pointsMessage = d.getElementById("points-message");
 var gameErrorMessage = d.getElementById("game-error");
 var pointsDom = d.getElementById("points");
 var foundWordsContainerDom = d.getElementById("found-words-container");
+
+// Variables
 var selectedCells = [];
 var allCells = [];
 
-// Constantes
 var vowels = ["A", "E", "I", "O", "U"];
-var consonants = [
-  "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"
-];
+var consonants = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"];
 
-// Variables
 //// Variable para saber cuando el juego esta activo y cuando no
 var gameStart = false;
 //// Contador del tiempo restante de un juego
@@ -155,10 +153,11 @@ function showScore() {
     icon: "info",
     confirmButtonColor: "#3085d6",
     confirmButtonText: "Jugar de nuevo",
+    cancelButtonText: "Salir", 
     showCancelButton: true,
     cancelButtonColor: "#d33"
-  }).then(function(result) {
-    if (result.isConfirmed) {
+  }).then(function(res) {
+    if (res.isConfirmed) {
       startGame();
     } else {
       window.location.replace("/");
@@ -294,6 +293,7 @@ function getAdjacentCells(cell) {
   var index = allCells.indexOf(cell);
   var row = Math.floor(index / 4);
   var col = index % 4;
+  
   var adjacentCells = [];
 
   // Verifica las celdas adyacentes en la matriz 4x4
@@ -309,14 +309,20 @@ function getAdjacentCells(cell) {
 }
 
 // Verifica si dos celdas son adyacentes en el tablero
-function isAdjacent(cell1, cell2) {
-  var index1 = allCells.indexOf(cell1);
-  var index2 = allCells.indexOf(cell2);
-  var row1 = Math.floor(index1 / 4);
-  var col1 = index1 % 4;
-  var row2 = Math.floor(index2 / 4);
-  var col2 = index2 % 4;
-  return Math.abs(row1 - row2) <= 1 && Math.abs(col1 - col2) <= 1;
+function isAdjacent(lastCell, cell) {
+  var lastCellIndex = allCells.indexOf(lastCell);
+  var cellIndex = allCells.indexOf(cell);
+
+  var lastCellRow = Math.floor(lastCellIndex / 4);
+  var lastCellCol = lastCellIndex % 4;
+
+  var cellRow = Math.floor(cellIndex / 4);
+  var cellCol = cellIndex % 4;
+
+  var rowsAreAdjacent = Math.abs(lastCellRow - cellRow) <= 1;
+  var colsAreAdjacent = Math.abs(lastCellCol - cellCol) <= 1;
+
+  return rowsAreAdjacent && colsAreAdjacent; 
 }
 
 // Funcion que reinicia todos los estilos de las celdas en caso de jugar de nuevo
