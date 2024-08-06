@@ -8,8 +8,6 @@ var boggleGame = d.querySelector(".boggleGame");
 var nameError = d.getElementById("nameError");
 var nameInput = d.getElementById("nameInput");
 
-/* var gameTime = d.getElementById("game-time"); */
-
 var rankingButton = d.getElementById("rankingButton");
 var rankingButtonMobile = d.getElementById("rankingButtonMobile");
 
@@ -50,8 +48,8 @@ function showRanking() {
     title: "Ranking",
     html: tabla.outerHTML,
     width: "600px",
-    showCloseButton: true,
-    focusConfirm: false
+    showCloseButton: false,
+    focusConfirm: true
   });
 }
 
