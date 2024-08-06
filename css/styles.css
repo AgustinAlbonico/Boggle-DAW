@@ -29,7 +29,7 @@ body {
   left: 0;
 }
 
-.navbar-container {
+.navbarContainer {
   margin: 0 auto;
   width: 70%;
   display: flex;
@@ -115,7 +115,7 @@ body {
   flex-direction: column;
 }
 
-.input-container {
+.inputContainer {
   display: flex;
   flex-direction: column;
   margin-bottom: 0.75rem;
@@ -148,7 +148,7 @@ body {
   text-align: center;
 }
 
-.left-container {
+.leftContainer {
   height: 100%;
   width: 25%;
 }
@@ -201,32 +201,32 @@ body {
   transform: scale(1.05);
 }
 
-.game-text {
+.gameText {
   display: flex;
   flex-direction: column;
 }
 
-#game-error {
+#gameError {
   color: #d1495b;
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
 
-.current-word {
+.currentWord {
   font-size: 1.5rem;
 }
 
-#current-word {
+#currentWord {
   font-weight: bold;
 }
 
-.found-words {
+.foundWords {
   height: 100%;
   width: 30%;
   position: relative;
 }
 
-#points-message {
+#pointsMessage {
   position: absolute;
   text-align: center;
   top: -1.5rem;
@@ -236,7 +236,7 @@ body {
   color: red;
 }
 
-.points-text {
+.pointsText {
   font-size: 1.75rem;
   font-weight: normal;
   margin-bottom: 1rem;
@@ -246,7 +246,7 @@ body {
   font-weight: bold;
 }
 
-#found-words-container {
+#foundWordsContainer {
   list-style: none;
   font-weight: bold;
 }
@@ -259,7 +259,7 @@ body {
 
 /* Contact Form */
 
-.form-container {
+.formContainer {
   margin: 0 auto;
   width: 480px;
   background-color: #fff;
@@ -268,34 +268,34 @@ body {
   border: 1px solid black;
 }
 
-.form-container h2 {
+.formContainer h2 {
   text-align: center;
   font-size: 3rem;
 }
 
-.form-input {
+.formInput {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   margin: 0.75rem 0;
 }
 
-.form-input label {
+.formInput label {
   font-size: 1.25rem;
 }
 
-.form-input input {
+.formInput input {
   padding: 0.5rem;
   border-radius: 0.25rem;
   border: 0.5px black solid;
   transition: 0.3s all;
 }
 
-.form-input input:hover {
+.formInput input:hover {
   transform: scale(1.01);
 }
 
-.form-input textarea {
+.formInput textarea {
   padding: 0.5rem;
   border-radius: 0.25rem;
   border: 0.5px black solid;
@@ -304,7 +304,7 @@ body {
   height: 200px;
 }
 
-.form-input textarea:hover {
+.formInput textarea:hover {
   transform: scale(1.01);
 }
 
@@ -337,7 +337,7 @@ body {
   font-size: 0.95rem;
 }
 
-.text-red {
+.textRed {
   color: #d1495b;
 }
 
@@ -345,11 +345,11 @@ body {
   background-color: #9ae19d;
 }
 
-.last-selected {
+.lastSelected {
   outline: 2px black solid;
 }
 
-.able-to-select {
+.ableToSelect {
   background-color: #edae49;
 }
 
@@ -359,12 +359,12 @@ body {
 
 /* Mobile Navbar */
 
-.mobile-navbar {
+.mobileNavbar {
   display: none;
   width: 100%;
 }
 
-.mobile-navbar-links {
+.mobileNavbarLinks {
   display: none;
   position: fixed;
   z-index: 50;
@@ -375,14 +375,14 @@ body {
   height: 100vh;
 }
 
-.mobile-navbar-links .links-container {
+.mobileNavbarLinks .linksContainer {
   margin-top: 8rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.mobile-navbar-item {
+.mobileNavbarItem {
   width: 100%;
   display: block;
   position: relative !important;
@@ -395,12 +395,12 @@ body {
 
 }
 
-.mobile-navbar a {
+.mobileNavbar a {
   text-decoration: none;
   color: black;
 }
 
-.mobile-navbar button {
+.mobileNavbar button {
   background-color: transparent;
   color: black;
   position: absolute;
@@ -410,7 +410,7 @@ body {
   z-index: 51;
 }
 
-.mobile-buttons {
+.mobileButtons {
   display: flex;
   align-items: center;
 }
@@ -423,7 +423,7 @@ body {
     margin-top: 2rem;
   }
 
-  .left-container {
+  .leftContainer {
     display: none;
   }
 
@@ -431,11 +431,11 @@ body {
     display: none;
   }
 
-  .mobile-navbar {
+  .mobileNavbar {
     display: block;
   }
 
-  .mobile-navbar-links {
+  .mobileNavbarLinks {
     display: flex;
     flex-direction: column;
   }
@@ -450,7 +450,7 @@ body {
     min-width: 100px;
   }
 
-  .found-words {
+  .foundWords {
     margin-top: 40px;
   }
 }

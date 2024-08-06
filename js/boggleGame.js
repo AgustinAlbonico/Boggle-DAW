@@ -3,15 +3,15 @@
 // Elementos del DOM
 var d = document;
 var time = d.getElementById("time");
-var gameTime = d.getElementById("game-time");
-var currentWordDom = d.getElementById("current-word");
-var sendWordButton = d.getElementById("send-word");
-var clearWordButton = d.getElementById("clear-word");
-/* var cell = d.querySelectorAll(".cell"); */ /* Para mi está de mas */
-var pointsMessage = d.getElementById("points-message");
-var gameErrorMessage = d.getElementById("game-error");
+var gameTime = d.getElementById("gameTime");
+var currentWordDom = d.getElementById("currentWord");
+var sendWordButton = d.getElementById("sendWord");
+var clearWordButton = d.getElementById("clearWord");
+var pointsMessage = d.getElementById("pointsMessage");
+var gameErrorMessage = d.getElementById("gameError");
 var pointsDom = d.getElementById("points");
-var foundWordsContainerDom = d.getElementById("found-words-container");
+var foundWordsContainerDom = d.getElementById("foundWordsContainer");
+var nameInput = d.getElementById("nameInput");
 
 // Variables
 var selectedCells = [];
@@ -20,8 +20,6 @@ var allCells = [];
 var vowels = ["A", "E", "I", "O", "U"];
 var consonants = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"];
 
-//// Variable para saber cuando el juego esta activo y cuando no
-var gameStart = false;
 //// Contador del tiempo restante de un juego
 var remainingTime;
 var currentWord = "";
@@ -34,8 +32,7 @@ var foundWords;
 
 // Funcion que empieza el juego
 function startGame() {
-  time.classList.remove("text-red");
-  gameStart = true;
+  time.classList.remove("textRed");
   remainingTime = Number(gameTime.value) * 60;
   time.textContent = remainingTime;
   foundWords = [];
@@ -51,12 +48,11 @@ function startGame() {
 function handleTimer() {
   if (remainingTime === 0) {
     clearInterval(intervalID);
-    gameStart = false;
     showScore();
     saveGameData();
   }
   if (remainingTime === 10) {
-    time.classList.add("text-red");
+    time.classList.add("textRed");
   }
   time.textContent = remainingTime;
   remainingTime--;
@@ -78,7 +74,6 @@ function saveGameData() {
 // Funcion que valida la palabra ingresada en una api
 async function sendWord() {
   try {
-    sendWordButton.disabled = true;
     // Muestro el mensaje de error de palabra menor a 3 caracteres por un ratito y lo saco
     if (currentWord.length < 3) {
       showGameErrorMessage("La palabra debe contener mas de 3 caracteres");
@@ -92,7 +87,6 @@ async function sendWord() {
   } catch (error) {
     handleError("Error al verificar la palabra");
   } finally {
-    sendWordButton.disabled = false;
     resetCurrentWord();
   }
 }
@@ -149,7 +143,7 @@ function handleError(msjError) {
 function showScore() {
   Swal.fire({
     title: "Finalizó el juego",
-    text: "Su puntaje: " + totalScore,
+    text: nameInput.value + "tu puntaje es " + totalScore,
     icon: "info",
     confirmButtonColor: "#3085d6",
     confirmButtonText: "Jugar de nuevo",
@@ -216,9 +210,7 @@ function addWordToFound() {
 
 // Funcion que inicializa el tablero
 function initializeBoard() {
-  /* selectedCells = []; */ /* Duplciado, ya lo hace resetCurrentWord() */
   allCells = [];
-  /* resetCellsStyle(); */ /* Duplciado, ya lo hace resetCurrentWord() */
 
   // Armo el tablero
   // Selecciona 6 vocales aleatorias
@@ -242,7 +234,7 @@ function initializeBoard() {
   });
   
   for (var i = 1; i <= 16; i++) {
-    var cell = d.getElementById("cell-" + i);
+    var cell = d.getElementById("cell" + i);
     cell.textContent = boardLetters[i - 1];
     cell.addEventListener("click", handleCellClick);
     allCells.push(cell);
@@ -259,7 +251,7 @@ function handleCellClick(event) {
 
   if (selectedCells.length > 0) {
     var lastCell = selectedCells[selectedCells.length - 1];
-    lastCell.classList.remove("last-selected");
+    lastCell.classList.remove("lastSelected");
     if (!isAdjacent(lastCell, cell)) {
       return;
     }
@@ -268,13 +260,13 @@ function handleCellClick(event) {
   // Restablece el color original de todas las celdas adyacentes no seleccionadas
   allCells.forEach(function(adjacentCell) {
     if (selectedCells.indexOf(adjacentCell) === -1) {
-      adjacentCell.classList.remove("able-to-select");
+      adjacentCell.classList.remove("ableToSelect");
     }
   });
 
   // Añade las clases 'selected'
   cell.classList.add("selected");
-  cell.classList.add("last-selected");
+  cell.classList.add("lastSelected");
   selectedCells.push(cell);
   currentWord += cell.textContent;
   currentWordDom.textContent = currentWord;
@@ -283,7 +275,7 @@ function handleCellClick(event) {
   var adjacentCells = getAdjacentCells(cell);
   adjacentCells.forEach(function(adjacentCell) {
     if (selectedCells.indexOf(adjacentCell) === -1) {
-      adjacentCell.classList.add("able-to-select");
+      adjacentCell.classList.add("ableToSelect");
     }
   });
 }
@@ -328,10 +320,10 @@ function isAdjacent(lastCell, cell) {
 // Funcion que reinicia todos los estilos de las celdas en caso de jugar de nuevo
 function resetCellsStyle() {
   for (var i = 1; i <= 16; i++) {
-    var cell = d.getElementById("cell-" + i);
+    var cell = d.getElementById("cell" + i);
     cell.classList.remove("selected");
-    cell.classList.remove("last-selected");
-    cell.classList.remove("able-to-select");
+    cell.classList.remove("lastSelected");
+    cell.classList.remove("ableToSelect");
     cell.disabled = false;
   }
 }

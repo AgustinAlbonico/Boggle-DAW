@@ -1,8 +1,8 @@
 "use strict";
 
-var openButton = d.getElementById("open-menu-button");
-var closeButton = d.getElementById("close-menu-button");
-var menuLinks = d.getElementById("mobile-navbar-links");
+var openButton = d.getElementById("openMenuButton");
+var closeButton = d.getElementById("closeMenuButton");
+var menuLinks = d.getElementById("mobileNavbarLinks");
 
 openButton.addEventListener("click", function() {
   openButton.classList.add("hidden");
