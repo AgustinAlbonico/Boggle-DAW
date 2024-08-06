@@ -164,7 +164,6 @@ function resetCurrentWord() {
   currentWord = "";
   selectedCells = [];
   currentWordDom.textContent = currentWord;
-  /* gameErrorMessage.classList.add("hidden"); */ /* Agregarlo da error */
   resetCellsStyle();
 }
 
