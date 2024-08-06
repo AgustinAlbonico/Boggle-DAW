@@ -143,7 +143,7 @@ function handleError(msjError) {
 function showScore() {
   Swal.fire({
     title: "Finalizó el juego",
-    text: nameInput.value + "tu puntaje es " + totalScore,
+    text: nameInput.value + " tu puntaje es " + totalScore,
     icon: "info",
     confirmButtonColor: "#3085d6",
     confirmButtonText: "Jugar de nuevo",
@@ -251,7 +251,9 @@ function handleCellClick(event) {
 
   if (selectedCells.length > 0) {
     var lastCell = selectedCells[selectedCells.length - 1];
-    lastCell.classList.remove("lastSelected");
+    if(cell.classList.contains("ableToSelect")){
+      lastCell.classList.remove("lastSelected"); 
+    }
     if (!isAdjacent(lastCell, cell)) {
       return;
     }
