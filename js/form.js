@@ -1,15 +1,15 @@
-'use strict'; 
+"use strict"; 
 
 var d = document;
 
-var contactForm = d.getElementById('contactForm');
+var contactForm = d.getElementById("contactForm");
 
-var nameInput = document.getElementById('name');
-var emailInput = document.getElementById('email');
-var messageInput = document.getElementById('message');
-var nameError = document.getElementById('nameError');
-var emailError = document.getElementById('emailError');
-var messageError = document.getElementById('messageError');
+var nameInput = document.getElementById("name");
+var emailInput = document.getElementById("email");
+var messageInput = document.getElementById("message");
+var nameError = document.getElementById("nameError");
+var emailError = document.getElementById("emailError");
+var messageError = document.getElementById("messageError");
 
 var validateAndSendForm = function (e) {
   e.preventDefault();
@@ -17,33 +17,33 @@ var validateAndSendForm = function (e) {
   var isValid = true;
 
   // Valido el nombre
-  if (nameInput.value.trim() === '') {
-    nameError.textContent = 'El nombre es obligatorio';
+  if (nameInput.value.trim() === "") {
+    nameError.textContent = "El nombre es obligatorio";
     isValid = false;
   } else if (!/^[a-zA-Z0-9 ]+$/.test(nameInput.value)) {
-    nameError.textContent = 'El nombre solo puede contener letras, números y espacios';
+    nameError.textContent = "El nombre solo puede contener letras, números y espacios";
     isValid = false;
   } else {
-    nameError.textContent = '';
+    nameError.textContent = "";
   }
 
   // Valido el email
-  if (emailInput.value.trim() === '') {
-    emailError.textContent = 'El correo electrónico es obligatorio';
+  if (emailInput.value.trim() === "") {
+    emailError.textContent = "El correo electrónico es obligatorio";
     isValid = false;
   } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(emailInput.value)) {
-    emailError.textContent = 'El correo electrónico no es válido';
+    emailError.textContent = "El correo electrónico no es válido";
     isValid = false;
   } else {
-    emailError.textContent = '';
+    emailError.textContent = "";
   }
 
   // Valido el mensaje
   if (messageInput.value.trim().length < 5) {
-    messageError.textContent = 'El mensaje debe tener al menos 5 caracteres';
+    messageError.textContent = "El mensaje debe tener al menos 5 caracteres";
     isValid = false;
   } else {
-    messageError.textContent = '';
+    messageError.textContent = "";
   }
 
   // Abro el email del sist. operativo con los datos del form
@@ -54,4 +54,4 @@ var validateAndSendForm = function (e) {
   }
 };
 
-contactForm.addEventListener('submit', validateAndSendForm);
+contactForm.addEventListener("submit", validateAndSendForm);

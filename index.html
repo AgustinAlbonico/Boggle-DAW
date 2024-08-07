@@ -1,132 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/normalize.css" />
-    <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet"/>
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css" rel="stylesheet" />
-    <title>Boggle</title>
-  </head>
-
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar" id="navbar">
-      <div class="navbarContainer">
-        <h1 class="logo"><a href="/">Boggle</a></h1>
-        <div class="links">
-          <a href="/">Inicio</a>
-          <a href="/contact.html">Contacto</a>
-          <a href="https://github.com/AgustinAlbonico/Boggle-DAW" target="_blank">Repositorio</a>
-          <button id="rankingButton">Ranking</button>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Navbar Teléfono -->
-    <nav class="mobileNavbar" id="mobileNavbar">
-      <!-- hamburguesa desactivada -->
-      <div class="navbarContainer">
-        <h1 class="logo"><a href="/">Boggle</a></h1>
-        <div class="mobileButtons">
-          <button id="openMenuButton">☰</button>
-          <button class="hidden" id="closeMenuButton">X</button>
-        </div>
-      </div>
-      <!-- hamburguesa activada -->
-      <div class="mobileNavbarLinks hidden" id="mobileNavbarLinks">
-        <div class="linksContainer">
-          <a href="/" class="mobileNavbarItem">Inicio</a>
-          <a href="/contact.html" class="mobileNavbarItem">Contacto</a>
-          <a href="https://github.com/AgustinAlbonico/Boggle-DAW" target="_blank" class="mobileNavbarItem">Repositorio</a>
-          <button id="rankingButtonMobile" class="mobileNavbarItem">Ranking</button>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Bienvenida + Juego-->
-    <div class="container">
-      <!-- Formulario de bienvenida -->
-      <div class="welcomeForm">
-        <form id="welcomeForm">
-          <h2>Bienvenido!</h2>
-          <label for="name">Ingrese su nombre:</label>
-          <div class="inputContainer">
-            <input type="text" name="name" id="nameInput" placeholder="Tu nombre" />
-            <span id="nameError" class="error"></span>
-          </div>
-          <div class="inputContainer">
-            <label for="gameTime">Tiempo de juego</label>
-            <select id="gameTime">
-              <option value="1">1 minuto</option>
-              <option value="2">2 minutos</option>
-              <option value="3">3 minutos</option>
-            </select>
-          </div>
-          <button type="submit" class="button">Jugar!</button>
-        </form>
-      </div>
-
-      <!-- Juego -->
-      <div class="boggleGame hidden">
-        <div class="leftContainer"></div>
-        <div class="game">
-          <span class="timer">Tiempo restante: <span id="time"></span></span>
-          <div id="board">
-            <div class="row" id="row1">
-              <button class="cell" id="cell1"></button>
-              <button class="cell" id="cell2"></button>
-              <button class="cell" id="cell3"></button>
-              <button class="cell" id="cell4"></button>
-            </div>
-            <div class="row" id="row2">
-              <button class="cell" id="cell5"></button>
-              <button class="cell" id="cell6"></button>
-              <button class="cell" id="cell7"></button>
-              <button class="cell" id="cell8"></button>
-            </div>
-            <div class="row" id="row3">
-              <button class="cell" id="cell9"></button>
-              <button class="cell" id="cell10"></button>
-              <button class="cell" id="cell11"></button>
-              <button class="cell" id="cell12"></button>
-            </div>
-            <div class="row" id="row4">
-              <button class="cell" id="cell13"></button>
-              <button class="cell" id="cell14"></button>
-              <button class="cell" id="cell15"></button>
-              <button class="cell" id="cell16"></button>
-            </div>
-          </div>
-          <div class="gameText">
-            <span class="hidden" id="gameError"></span>
-            <span class="currentWord">Palabra formada: <span id="currentWord"></span></span>
-          </div>
-          <div class="buttons">
-            <div class="button" id="sendWord" style="width: 12rem; margin: 2rem auto 0 auto">Enviar palabra</div>
-            <div class="button" id="clearWord" style="background-color: #edae49; width: 12rem; margin: 1rem auto 0 auto;">Limpiar palabra</div>
-          </div>
-        </div>
-        <div class="foundWords">
-          <span id="pointsMessage"></span>
-          <h2 class="pointsWext">Puntaje: <span id="points">0</span></h2>
-          <ul id="foundWordsContainer"></ul>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/normalize.css" />
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css" rel="stylesheet" />
+  <title>Boggle</title>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="navbarContainer">
+      <h1 class="logo"><a href="/">Boggle</a></h1>
+      <div class="links">
+        <a href="/">Inicio</a>
+        <a href="/contact.html">Contacto</a>
+        <a href="https://github.com/AgustinAlbonico/Boggle-DAW" target="_blank">Repositorio</a>
+        <button id="rankingButton">Ranking</button>
       </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <p>&copy; 2024 Agustín Albónico & Nicolas Di Domenico. Todos los derechos reservados.</p>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="./js/welcomeForm.js"></script>
-    <script src="./js/boggleGame.js"></script>
-    <script src="./js/mobileNavbar.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.all.min.js"></script>
-  </body>
+  </nav>
+  <!-- Navbar Teléfono -->
+  <nav class="mobileNavbar" id="mobileNavbar">
+    <!-- Hamburguesa desactivada -->
+    <div class="navbarContainer">
+      <h1 class="logo"><a href="/">Boggle</a></h1>
+      <div class="mobileButtons">
+        <button id="openMenuButton">☰</button>
+        <button class="hidden" id="closeMenuButton">X</button>
+      </div>
+    </div>
+    <!-- Hamburguesa activada -->
+    <div class="mobileNavbarLinks hidden" id="mobileNavbarLinks">
+      <div class="linksContainer">
+        <a href="/" class="mobileNavbarItem">Inicio</a>
+        <a href="/contact.html" class="mobileNavbarItem">Contacto</a>
+        <a href="https://github.com/AgustinAlbonico/Boggle-DAW" target="_blank" class="mobileNavbarItem">Repositorio</a>
+        <button id="rankingButtonMobile" class="mobileNavbarItem">Ranking</button>
+      </div>
+    </div>
+  </nav>
+  <!-- Bienvenida + Juego-->
+  <div class="container">
+    <!-- Formulario de bienvenida -->
+    <div class="welcomeForm">
+      <form id="welcomeForm">
+        <h2>Bienvenido!</h2>
+        <label for="name">Ingrese su nombre:</label>
+        <div class="inputContainer">
+          <input type="text" name="name" id="nameInput" placeholder="Tu nombre" />
+          <span id="nameError" class="error"></span>
+        </div>
+        <div class="inputContainer">
+          <label for="gameTime">Tiempo de juego</label>
+          <select id="gameTime">
+            <option value="1">1 minuto</option>
+            <option value="2">2 minutos</option>
+            <option value="3">3 minutos</option>
+          </select>
+        </div>
+        <button type="submit" class="button">Jugar!</button>
+      </form>
+    </div>
+    <!-- Juego -->
+    <div class="boggleGame hidden">
+      <div class="leftContainer"></div>
+      <div class="game">
+        <span class="timer">Tiempo restante: <span id="time"></span></span>
+        <div id="board">
+          <div class="row" id="row1">
+            <button class="cell" id="cell1"></button>
+            <button class="cell" id="cell2"></button>
+            <button class="cell" id="cell3"></button>
+            <button class="cell" id="cell4"></button>
+          </div>
+          <div class="row" id="row2">
+            <button class="cell" id="cell5"></button>
+            <button class="cell" id="cell6"></button>
+            <button class="cell" id="cell7"></button>
+            <button class="cell" id="cell8"></button>
+          </div>
+          <div class="row" id="row3">
+            <button class="cell" id="cell9"></button>
+            <button class="cell" id="cell10"></button>
+            <button class="cell" id="cell11"></button>
+            <button class="cell" id="cell12"></button>
+          </div>
+          <div class="row" id="row4">
+            <button class="cell" id="cell13"></button>
+            <button class="cell" id="cell14"></button>
+            <button class="cell" id="cell15"></button>
+            <button class="cell" id="cell16"></button>
+          </div>
+        </div>
+        <div class="gameText">
+          <span class="hidden" id="gameError"></span>
+          <span class="currentWord">Palabra formada: <span id="currentWord"></span></span>
+        </div>
+        <div class="buttons">
+          <div class="button" id="sendWord" style="width: 12rem; margin: 2rem auto 0 auto">Enviar palabra</div>
+          <div class="button" id="clearWord" style="background-color: #edae49; width: 12rem; margin: 1rem auto 0 auto;">Limpiar palabra</div>
+        </div>
+      </div>
+      <div class="foundWords">
+        <span id="pointsMessage"></span>
+        <h2 class="pointsWext">Puntaje: <span id="points">0</span></h2>
+        <ul id="foundWordsContainer"></ul>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <p>&copy; 2024 Agustín Albónico & Nicolás Di Domenico. Todos los derechos reservados.</p>
+  </footer>
+  <script src="./js/welcomeForm.js"></script>
+  <script src="./js/boggleGame.js"></script>
+  <script src="./js/mobileNavbar.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.all.min.js"></script>
+</body>
 </html>
