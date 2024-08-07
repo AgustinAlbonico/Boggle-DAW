@@ -2,7 +2,7 @@
 
 Members: 
 - Albónico, Agustín.
-- Di Domenico, Nicolás
+- Di Domenico, Nicolás.
 
 [GitHub Repository](https://github.com/AgustinAlbonico/Boggle-DAW)
 
