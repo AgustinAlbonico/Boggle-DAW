@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 // Elementos del DOM
 var d = document;
@@ -149,7 +149,7 @@ function showScore() {
     confirmButtonText: "Jugar de nuevo",
     cancelButtonText: "Salir", 
     showCancelButton: true,
-    cancelButtonColor: "#d33"
+    cancelButtonColor: "#dd3333"
   }).then(function(res) {
     if (res.isConfirmed) {
       startGame();
@@ -194,7 +194,7 @@ function showGameErrorMessage(msg) {
   setTimeout(function() {
     gameErrorMessage.classList.add("hidden");
     gameErrorMessage.textContent = "";
-    gameErrorMessage.style.removeProperty('color');
+    gameErrorMessage.style.removeProperty("color");
   }, 1500);
   return;
 }
@@ -265,7 +265,7 @@ function handleCellClick(event) {
     }
   });
 
-  // Añade las clases 'selected'
+  // Añade las clases "selected"
   cell.classList.add("selected");
   cell.classList.add("lastSelected");
   selectedCells.push(cell);
@@ -333,9 +333,8 @@ function resetCellsStyle() {
 function resetSecondaryPanel() {
   totalScore = 0;
   pointsDom.textContent = totalScore;
-  foundWordsContainerDom.innerHTML = '';
+  foundWordsContainerDom.innerHTML = "";
 }
 
-// Eventos
 sendWordButton.addEventListener("click", sendWord);
 clearWordButton.addEventListener("click", resetCurrentWord);

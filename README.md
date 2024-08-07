@@ -1,4 +1,4 @@
-# DAW-FINAL
+# DAW-FINAL-BOGGLE
 
 Members: 
 - Albónico, Agustín.

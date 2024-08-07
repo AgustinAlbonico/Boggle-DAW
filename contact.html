@@ -1,101 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./css/normalize.css"/>
-    <title>Boggle - Contacto</title>
-  </head>
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-      <div class="navbarContainer">
-        <h1 class="logo"><a href="/">Boggle</a></h1>
-        <div class="links">
-          <a href="/">Inicio</a>
-          <a href="/contact.html">Contacto</a>
-          <a
-            href="https://github.com/AgustinAlbonico/Boggle-DAW"
-            target="_blank"
-            >Repositorio</a
-          >
-        </div>
-      </div>
-    </nav>
-
-    <nav class="mobileNavbar" id="mobileNavbar">
-      <div class="navbarContainer">
-        <h1 class="logo"><a href="/">Boggle</a></h1>
-        <div class="mobileButtons">
-          <button id="openMenuButton">☰</button>
-          <button class="hidden" id="closeMenuButton">X</button>
-        </div>
-      </div>
-      <div class="mobileNavbarLinks hidden" id="mobileNavbarLinks">
-        <div class="linksContainer">
-          <a href="/" class="mobileNavbarItem">Inicio</a>
-          <a href="/contact.html" class="mobileNavbarItem">Contacto</a>
-          <a
-            href="https://github.com/AgustinAlbonico/Boggle-DAW"
-            target="_blank"
-            class="mobileNavbarItem"
-            >Repositorio</a
-          >
-          <button id="rankingButton" class="mobileNavbarItem">Ranking</button>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Contact Form -->
-    <div class="container">
-      <div class="formContainer">
-        <h2>Contacto</h2>
-        <form id="contactForm" method="post" enctype="text/plain" novalidate>
-          <div class="formInput">
-            <label for="name">Nombre completo:</label>
-            <input type="text" id="name" placeholder="John Doe" required />
-            <span class="error" id="nameError"></span>
-          </div>
-          <div class="formInput">
-            <label for="name">Email:</label>
-            <input
-              type="email"
-              id="email"
-              placeholder="you@company.com"
-              required
-            />
-            <span class="error" id="emailError"></span>
-          </div>
-          <div class="formInput">
-            <label for="message">Mensaje:</label>
-            <textarea
-              type="text"
-              id="message"
-              required
-              resize="none"
-              placeholder="Tu mensaje(min. 5 caracteres)"
-            ></textarea>
-            <span class="error" id="messageError"></span>
-          </div>
-          <button id="submitButton" class="button">Enviar!</button>
-        </form>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/normalize.css"/>
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet"/>
+  <title>Boggle - Contacto</title>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbarContainer">
+      <h1 class="logo"><a href="/">Boggle</a></h1>
+      <div class="links">
+        <a href="/">Inicio</a>
+        <a href="/contact.html">Contacto</a>
+        <a href="https://github.com/AgustinAlbonico/Boggle-DAW" target="_blank">Repositorio</a>
       </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <p>&copy; 2024 Agustín Albónico & Nicolas Di Domenico. Todos los derechos reservados.</p>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="./js/form.js"></script>
-    <script src="./js/mobileNavbar.js"></script>
-  </body>
+  </nav>
+  <!-- Navbar Teléfono -->
+  <nav class="mobileNavbar" id="mobileNavbar">
+    <!-- Hamburguesa desactivada -->
+    <div class="navbarContainer">
+      <h1 class="logo"><a href="/">Boggle</a></h1>
+      <div class="mobileButtons">
+        <button id="openMenuButton">☰</button>
+        <button class="hidden" id="closeMenuButton">X</button>
+      </div>
+    </div>
+    <!-- Hamburguesa activada -->
+    <div class="mobileNavbarLinks hidden" id="mobileNavbarLinks">
+      <div class="linksContainer">
+        <a href="/" class="mobileNavbarItem">Inicio</a>
+        <a href="/contact.html" class="mobileNavbarItem">Contacto</a>
+        <a href="https://github.com/AgustinAlbonico/Boggle-DAW" target="_blank" class="mobileNavbarItem">Repositorio</a>
+        <button id="rankingButton" class="mobileNavbarItem">Ranking</button>
+      </div>
+    </div>
+  </nav>
+  <!-- Contact Form -->
+  <div class="container">
+    <div class="formContainer">
+      <h2>Contacto</h2>
+      <form id="contactForm" method="post" enctype="text/plain" novalidate>
+        <div class="formInput">
+          <label for="name">Nombre completo:</label>
+          <input type="text" id="name" placeholder="John Doe" required />
+          <span class="error" id="nameError"></span>
+        </div>
+        <div class="formInput">
+          <label for="name">Email:</label>
+          <input type="email" id="email" placeholder="you@company.com" required />
+          <span class="error" id="emailError"></span>
+        </div>
+        <div class="formInput">
+          <label for="message">Mensaje:</label>
+          <textarea type="text" id="message" required resize="none" placeholder="Tu mensaje(min. 5 caracteres)"></textarea>
+          <span class="error" id="messageError"></span>
+        </div>
+        <button id="submitButton" class="button">Enviar!</button>
+      </form>
+    </div>
+  </div>
+  <footer class="footer">
+    <p>&copy; 2024 Agustín Albónico & Nicolás Di Domenico. Todos los derechos reservados.</p>
+  </footer>
+  <script src="./js/form.js"></script>
+  <script src="./js/mobileNavbar.js"></script>
+</body>
 </html>

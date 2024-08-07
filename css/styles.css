@@ -39,7 +39,7 @@ body {
 
 .navbar a {
   text-decoration: none;
-  color: black;
+  color: #000000;
 }
 
 .logo {
@@ -64,7 +64,7 @@ body {
 
 #rankingButton {
   background-color: #4238cb;
-  color: white;
+  color: #ffffff;
   border: none;
   border-radius: 0.25rem;
   padding: 0.5rem 1rem;
@@ -98,8 +98,8 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #fff;
-  border: 1px solid black;
+  background-color: #ffffff;
+  border: 1px solid #000000;
   border-radius: 0.25rem;
 }
 
@@ -129,7 +129,7 @@ body {
 #welcomeForm input,
 #welcomeForm select {
   padding: 0.75rem;
-  border: 1px solid black;
+  border: 1px solid #000000;
   border-radius: 0.25rem;
   transition: 0.3s all ease;
   margin-bottom: 0.25rem;
@@ -192,7 +192,7 @@ body {
   align-items: center;
   font-weight: bold;
   font-size: 1.5rem;
-  color: #fff;
+  color: #ffffff;
   transition: 0.3s all;
 }
 
@@ -233,7 +233,7 @@ body {
   left: 0;
   right: 0;
   font-weight: bold;
-  color: red;
+  color: #ff0000;
 }
 
 .pointsText {
@@ -262,10 +262,10 @@ body {
 .formContainer {
   margin: 0 auto;
   width: 480px;
-  background-color: #fff;
+  background-color: #ffffff;
   padding: 1rem 1.5rem;
   border-radius: 0.5rem;
-  border: 1px solid black;
+  border: 1px solid #000000;
 }
 
 .formContainer h2 {
@@ -287,7 +287,7 @@ body {
 .formInput input {
   padding: 0.5rem;
   border-radius: 0.25rem;
-  border: 0.5px black solid;
+  border: 0.5px #000000 solid;
   transition: 0.3s all;
 }
 
@@ -298,7 +298,7 @@ body {
 .formInput textarea {
   padding: 0.5rem;
   border-radius: 0.25rem;
-  border: 0.5px black solid;
+  border: 0.5px #000000 solid;
   resize: none;
   transition: 0.3s all;
   height: 200px;
@@ -314,7 +314,7 @@ body {
   cursor: pointer;
   width: 100%;
   padding: 1rem 0;
-  color: #fff;
+  color: #ffffff;
   border: none;
   border-radius: 0.25rem;
   font-size: 1rem;
@@ -346,7 +346,7 @@ body {
 }
 
 .lastSelected {
-  outline: 2px black solid;
+  outline: 2px #000000 solid;
 }
 
 .ableToSelect {
@@ -370,7 +370,7 @@ body {
   z-index: 50;
   top: 0;
   left: 0;
-  background-color: white;
+  background-color: #ffffff;
   width: 100%;
   height: 100vh;
 }
@@ -389,7 +389,7 @@ body {
   background-color: transparent !important;
   font-size: 3rem !important;
   text-align: center;
-  color: black !important;
+  color: #000000 !important;
   font-weight: bold;
   padding: 0 !important;
 
@@ -397,12 +397,12 @@ body {
 
 .mobileNavbar a {
   text-decoration: none;
-  color: black;
+  color: #000000;
 }
 
 .mobileNavbar button {
   background-color: transparent;
-  color: black;
+  color: #000000;
   position: absolute;
   border: none;
   cursor: pointer;
