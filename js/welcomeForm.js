@@ -74,6 +74,11 @@ function crearTabla() {
     trCabecera.appendChild(th);
   });
 
+  // Ordenar las partidas por puntaje
+  listaJuegos.sort(function(a, b) {
+    return b.score - a.score;
+  });
+
   // Crear filas de partidas jugadas
   listaJuegos.forEach(function(juego) {
     var trCuerpo = document.createElement("tr");
