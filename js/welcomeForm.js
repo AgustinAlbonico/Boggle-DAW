@@ -73,7 +73,7 @@ function crearTabla() {
     th.textContent = cabecera;
     trCabecera.appendChild(th);
   });
-
+  
   // Ordenar las partidas por puntaje
   listaJuegos.sort(function(a, b) {
     return b.score - a.score;
