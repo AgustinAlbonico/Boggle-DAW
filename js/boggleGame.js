@@ -34,7 +34,6 @@ var foundWords;
 function startGame() {
   time.classList.remove("textRed");
   remainingTime = Number(gameTime.value) * 60;
-  time.textContent = remainingTime;
   foundWords = [];
 
   resetSecondaryPanel();
@@ -67,8 +66,7 @@ function saveGameData() {
     date: new Date().toLocaleString(),
     time: gameTime.value
   });
-  var formatedSavegame = JSON.stringify(savegame);
-  localStorage.setItem("savegame", formatedSavegame);
+  localStorage.setItem("savegame", JSON.stringify(savegame));
 }
 
 // Funcion que valida la palabra ingresada en una api
@@ -248,6 +246,7 @@ function handleCellClick(event) {
     return;
   }
 
+  // Verificar si la celda clicada es adyacente a la última celda seleccionada
   if (selectedCells.length > 0) {
     var lastCell = selectedCells[selectedCells.length - 1];
     if(cell.classList.contains("ableToSelect")){
@@ -297,7 +296,6 @@ function getAdjacentCells(cell) {
       }
     }
   }
-
   return adjacentCells;
 }
 
